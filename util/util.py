@@ -29,8 +29,9 @@ def make_soup(input_url):
         return BeautifulSoup(r.content, "lxml")
     except URLError as e:
         print("Error with URL: " + input_url)
-        return BeautifulSoup()
+        return BeautifulSoup('', features='lxml')
 
+# TO DO: Normalize film strings
 
 def create_web_driver():
     global driver

@@ -17,40 +17,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>print(</find>
-      <find>records</find>
-      <find>print(str</find>
-      <find>Country of</find>
-      <find>Country of origin</find>
-      <find>No. of episodes</find>
-      <find>No. of episo</find>
-      <find>yop</find>
-      <find>Kung</find>
-      <find>imdb</find>
-      <find>parse_imd</find>
-      <find>Season:</find>
-      <find>Set seaso</find>
-      <find>Se</find>
-      <find>Set S</find>
-      <find>Set Season</find>
-      <find>De twaalf</find>
-      <find>Littlest Pet Shop</find>
-      <find>Wendy</find>
-      <find>LAN</find>
-      <find>LANg</find>
-      <find>RTL</find>
-      <find>V</find>
-      <find>ZES</find>
-      <find>Seasp</find>
-      <find>genre</find>
-      <find>Sub</find>
-      <find>cast</find>
-      <find>print</find>
-      <find>The_Bay</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -158,7 +124,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="tmp" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="tst" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="series_film_scraper" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -166,11 +132,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/core" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tmp.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/core/tst.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -181,18 +147,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.tmp" />
       <item itemvalue="Python.main (1)" />
       <item itemvalue="Python.tmp (1)" />
       <item itemvalue="Python.nie" />
+      <item itemvalue="Python.tst" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main (1)" />
+        <item itemvalue="Python.tst" />
         <item itemvalue="Python.nie" />
         <item itemvalue="Python.tmp (1)" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.tmp" />
       </list>
     </recent_temporary>
   </component>
@@ -226,6 +192,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="276" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578366542018" />
+    <state width="1899" height="281" key="GridCell.Tab.0.bottom" timestamp="1578409016232">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578409016232" />
+    <state width="1899" height="281" key="GridCell.Tab.0.center" timestamp="1578409016231">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="281" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578409016231" />
+    <state width="1899" height="281" key="GridCell.Tab.0.left" timestamp="1578409016231">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="281" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578409016231" />
+    <state width="1899" height="281" key="GridCell.Tab.0.right" timestamp="1578409016231">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="281" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578409016231" />
     <state x="461" y="163" key="SettingsEditor" timestamp="1578366285782">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -57,7 +57,7 @@ class Nieuwsblad(ScheduleWebsite):
             raw_date = split_time[0].split(" ")[1:]
             month_str = raw_date[1].replace(",", '')
             day = raw_date[0]
-            month = Nieuwsblad.month_abbrv.index(month_str)
+            month = Nieuwsblad.month_abbrv.index(month_str)+1
 
             split_duration = [x.replace('u', ':') for x in split_time[1].split("-") if not x.isspace()]
 
@@ -65,10 +65,11 @@ class Nieuwsblad(ScheduleWebsite):
             end = split_duration[1]
 
             try:
+                day = day[1:] if day[0] == 0 else day
                 date = datetime.datetime(today.year, int(month), int(day))
                 record.date = date.strftime("%d/%m/%Y")
-            except ValueError as Exception:
-                pass
+            except ValueError as e:
+                print("Error with date...")
 
             cast = soup.find('p', class_='tvguide-actors')
 

@@ -12,12 +12,20 @@ alpha = 'abcdefghijklmnopqrstuvwxyz'.upper()
 today = datetime.date.today()
 ep_regex = re.compile('.*[0-9]+ ([Ee])pisode(s)*.*')
 
-headers_map = {
+headers_map_de = {
     'title': 'Uitzendtitel', 'date': 'Datum', 'channel': 'Zender',
     'start_time': 'Beginuur', 'stop_time': 'Einduur', 'original_title': 'Titel',
     'yop': 'Jaar', 'season': 'Jaargang', 'total_no_of_ep': 'Totaal aantal afleveringen',
     'cop': 'Productielanden', 'genre': 'Genre', 'subgenre': 'SubGenre', 'broadcast_lang': 'Taal van uitzending',
-    'series': 'Serie of film', 'id': 'ID', 'cast': 'Cast'
+    'type': 'Serie of film', 'id': 'ID', 'cast': 'Cast'
+}
+
+headers_map = {
+    'title': 'Original Title', 'date': 'Date', 'channel': 'Channel',
+    'start_time': 'Start Time', 'stop_time': 'Stop Time', 'original_title': 'Original Title',
+    'yop': 'Year of production', 'season': 'Seasons', 'total_no_of_ep': 'Total number of episodes',
+    'cop': 'Countries of production ', 'genre': 'Genre', 'subgenre': 'Sub Genre', 'broadcast_lang': 'Broadcast language',
+    'type': 'Series or movie', 'id': 'ID', 'cast': 'Cast'
 }
 
 
@@ -64,6 +72,14 @@ def parse_imdb_page(record, soup: BeautifulSoup):
 
     if not len(record.yop):
         pass
+
+    if not len(record.type):
+        meta_type = soup.find('meta', property='og:type')['content'].split(".")[1]
+        print("Meta type: " + meta_type)
+        if meta_type == 'tv_show':
+            record.type = 'series'
+        elif meta_type == 'movie':
+            record.type = 'film'
 
     if not len(record.title):
         tag = soup.find('div', class_='originalTitle')
@@ -114,6 +130,9 @@ def parse_imdb_page(record, soup: BeautifulSoup):
         yop_tag = find_textblock_tag(soup, 'Release Date')
         if yop_tag is not None:
             record.yop = extract_year_from_date(yop_tag.text.strip())
+
+    if not len(record.type):
+        pass
 
 
 en_wiki_base = 'https://en.wikipedia.org/wiki/'
@@ -226,6 +245,9 @@ def parse_wiki_page_en(record: Record, soup: BeautifulSoup) -> bool:
                 text = element.text
             table_map[header.text.strip()] = text
 
+    if 'No. of episodes' in table_map.keys() or 'No. of seasons' in table_map.keys():
+        record.type = 'series'
+
     if 'Genre' in table_map.keys():
         record.genre = table_map['Genre'].split("\n")[0]
 
@@ -270,6 +292,9 @@ def parse_wiki_page_nl(record: Record, soup: BeautifulSoup):
             table_map[elements[0].text.strip()] = text
 
    # print(str(table_map))
+
+    if 'Afleveringen' in table_map.keys() or 'Seizoenen' in table_map.keys():
+        record.type = 'series'
 
     if 'Genre' in table_map.keys():
         record.genre = table_map['Genre'].split("\n")[0]
