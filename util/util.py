@@ -1,16 +1,61 @@
-import os
+import datetime
 from urllib.error import URLError
-
 from bs4 import BeautifulSoup
-from selenium.webdriver.chrome import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium import webdriver
-
 import urllib
 from urllib import request
 from requests import Session
+from core.abstract import Record
+
+alpha = 'abcdefghijklmnopqrstuvwxyz'.upper()
+
+
+schedule_headers_map = {
+    'title': 'Original Title', 'date': 'Date', 'channel': 'Channel',
+    'start_time': 'Start Time', 'stop_time': 'Stop Time', 'original_title': 'Original Title',
+    'yop': 'Year of production', 'season': 'Season', 'seasons': 'Seasons', 'total_no_of_ep': 'Total number of episodes',
+    'cop': 'Countries of production ', 'genre': 'Genre', 'subgenre': 'Sub Genre', 'broadcast_lang': 'Broadcast language',
+    'type': 'Series/Movie', 'id': 'ID', 'cast': 'Cast', 'episode': 'Episode'
+}
+
+""" Maps instance variables to formatted Headers """
+
+series_headers_map = {
+    'title': 'Title', 'cast': 'actors', 'language': 'Broadcast language', 'episode': 'Episode',
+    'season': 'Season', 'type': 'Series/Movie', 'yop': 'Year of Production', 'season_year': 'Season Year'
+}
+
+
+movie_summary_headers = {
+    'title': 'Title', 'yop': 'Production Date', 'language': 'Language', 'cast': 'Actors', 'type': 'Movie/Series'
+}
+
+series_summary_headers = {
+    'title': 'Series Name', 'season': 'Season', 'season_year': 'Season year', 'count': 'No. of Episodes',
+    'type': 'Movie/Series'
+}
 
 driver = None
+
+
+def print_record_sched(record: Record):
+    _print_record_fields(record, schedule_headers_map, 'schedule')
+
+
+def print_record_summary(record: Record):
+    _print_record_fields(record, series_headers_map, 'summary')
+
+
+def _print_record_fields(record: Record, field_map: {}, type_name: str):
+    for k, v in vars(record).items():
+        if k in field_map.keys() and len(v):
+            print(f"Set {field_map[k]} : {v} ({type_name})")
+    print("\n")
+
+
+def get_current_date_string() -> str:
+    n = datetime.datetime.now()
+    return n.strftime("%m_%d_%y__%H%M")
+
 
 def make_soup(input_url):
     try:
@@ -28,25 +73,7 @@ def make_soup(input_url):
         r = Session().get(url=input_url)
         return BeautifulSoup(r.content, "lxml")
     except URLError as e:
-        print("Error with URL: " + input_url)
         return BeautifulSoup('', features='lxml')
 
-# TO DO: Normalize film strings
 
-def create_web_driver():
-    global driver
-
-    if driver is None:
-        chrome_driver_path = os.path.dirname(os.path.abspath(__file__)) + "/chromedriver.exe"
-        chrome_options = Options()
-
-        driver = webdriver.Chrome(executable_path=chrome_driver_path, chrome_options=chrome_options)
-        driver.set_window_size(1920, 1080)
-
-
-def get_sel_web_driver() -> webdriver.Chrome:
-    global driver
-    if driver is None:
-        create_web_driver()
-    return driver
 
